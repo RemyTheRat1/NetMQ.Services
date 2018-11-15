@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>NetMQ.Services</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Lucas Christinson</authors>
+    <owners>Lucas Christinson</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Simple implementations of NetMQ sockets that can be used as building blocks for applications.</description>
+    <copyright>Copyright 2018</copyright>
+	<projectUrl>https://github.com/ljchristinson/NetMQ.Services</projectUrl>
+	<licenseUrl>https://raw.githubusercontent.com/ljchristinson/NetMQ.Services/master/LICENSE</licenseUrl>
+	<dependencies>
+		<dependency id="NetMQ" version="4.0.0.1" />		
+	</dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\NetMQ.Services.dll" target="lib\net40" />    
+  </files>
+</package>
