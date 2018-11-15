@@ -5,7 +5,7 @@ using Xunit;
 
 namespace NetMQ.Services.UnitTests
 {
-    public class NetMQDealerSocketTests : IClassFixture<TestFixture>
+    public class NetMQDealerSocketTests
     {
         [Fact]
         public void ConnectAndCloseTest()

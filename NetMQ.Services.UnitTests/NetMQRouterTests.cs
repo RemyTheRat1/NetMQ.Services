@@ -6,7 +6,7 @@ using Xunit;
 
 namespace NetMQ.Services.UnitTests
 {
-    public class NetMQRouterTests : IClassFixture<TestFixture>
+    public class NetMQRouterTests
     {
         [Fact]
         public void IsRunningTest()

@@ -5,7 +5,7 @@ using Xunit;
 
 namespace NetMQ.Services.UnitTests
 {
-    public class NetMQSubscriberSocketTests : IClassFixture<TestFixture>
+    public class NetMQSubscriberSocketTests
     {
         [Fact]
         public void IsConnectedTest()
@@ -13,7 +13,7 @@ namespace NetMQ.Services.UnitTests
             var sut = new NetMQSubscriberSocket();
             Assert.False(sut.IsConnected);
 
-            sut.Connect("127.0.0.1", 12345);
+            sut.Connect("127.0.0.1", 14800);
             Assert.True(sut.IsConnected);
 
             sut.Close();
@@ -23,7 +23,7 @@ namespace NetMQ.Services.UnitTests
         [Fact]
         public void SubscribeAndReceiveMessageTest()
         {
-            int port = 14500;
+            int port = 14801;
             string ipAddress = "127.0.0.1";
             string topic = "topic";
             string message = "published message";
@@ -56,7 +56,7 @@ namespace NetMQ.Services.UnitTests
         public void UnsubscribeTest()
         {
             //first subscribe, and then publish a message and check that a message is received
-            int port = 14500;
+            int port = 14802;
             string ipAddress = "127.0.0.1";
             string topic = "topic";
             string message = "published message";

@@ -4,7 +4,7 @@ using Xunit;
 
 namespace NetMQ.Services.UnitTests
 {
-    public class NetMQPublisherSocketTests : IClassFixture<TestFixture>    
+    public class NetMQPublisherSocketTests
     {
         [Fact]
         public void IsConnectedTest()
