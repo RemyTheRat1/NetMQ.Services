@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace NetMQ.Services
 {
-    public class NetMQPublisherSocket
+    public class NetMQPublisherSocket : INetMQPublisherSocket
     {
         private PublisherSocket _publisherSocket;
         private NetMQPoller _poller;

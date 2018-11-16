@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace NetMQ.Services
 {
-    public class NetMQPubSubProxy
+    public class NetMQPubSubProxy : INetMQPubSubProxy
     {
         private int _subscribePort;
         private int _publishPort;

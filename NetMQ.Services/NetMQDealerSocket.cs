@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NetMQ.Services
 {
-    public class NetMQDealerSocket
+    public class NetMQDealerSocket : INetMQDealerSocket
     {
         private int _batchLimit;
         private DealerSocket _socket;

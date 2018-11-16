@@ -3,7 +3,7 @@ using System;
 
 namespace NetMQ.Services
 {
-    public class NetMQSubscriberSocket
+    public class NetMQSubscriberSocket : INetMQSubscriberSocket
     {
         private int _batchLimit;
         private SubscriberSocket _subscribeSocket;

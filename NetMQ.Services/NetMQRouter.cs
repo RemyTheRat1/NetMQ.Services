@@ -2,7 +2,7 @@
 
 namespace NetMQ.Services
 {
-    public class NetMQRouter
+    public class NetMQRouter : INetMQRouter
     {
         private const int EXPECTED_FRAME_COUNT = 4;
         private const int DESTINATION_IDENTITY_FRAME = 2;

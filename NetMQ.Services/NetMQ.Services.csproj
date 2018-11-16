@@ -48,6 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="INetMQDealerSocket.cs" />
+    <Compile Include="INetMQPublisherSocket.cs" />
+    <Compile Include="INetMQPubSubProxy.cs" />
+    <Compile Include="INetMQRouter.cs" />
+    <Compile Include="INetMQSubscriberSocket.cs" />
     <Compile Include="NetMQDealerSocket.cs" />
     <Compile Include="NetMQPublisherSocket.cs" />
     <Compile Include="NetMQPubSubProxy.cs" />
