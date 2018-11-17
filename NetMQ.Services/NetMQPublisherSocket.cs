@@ -77,6 +77,11 @@ namespace NetMQ.Services
 
         private void Publish(NetMQMessage msg)
         {
+            if (!IsRunning)
+            {
+                return;
+            }
+
             var task = new Task(() => _publisherSocket.SendMultipartMessage(msg));
             task.Start(_poller);
             task.Wait();
