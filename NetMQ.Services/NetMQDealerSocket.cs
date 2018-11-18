@@ -23,7 +23,7 @@ namespace NetMQ.Services
         /// <param name="queueSize">Max msg queue size (high watermark). Defaults to 75</param>
         /// <param name="identity">Identity for this socket. If left empty an identity will be auto generated</param>
         /// <param name="batchLimit">How many messages to grab in a batch to process at once for incoming messages. Defaults to 500</param>
-        public void Connect(string ipAddress, int port, int queueSize = 75, string identity = "", int batchLimit = 500)
+        public void Connect(string ipAddress, int port, string identity = "", int queueSize = 75, int batchLimit = 500)
         {
             if (IsConnected)
             {
@@ -66,7 +66,7 @@ namespace NetMQ.Services
             message.Append(data);
 
             SendMessage(message);
-        }        
+        }
 
         public void SendMessage(byte[] destinationIdentity, int data)
         {
@@ -92,6 +92,38 @@ namespace NetMQ.Services
             SendMessage(message);
         }
 
+        public void SendMessage(string destinationIdentity, string data)
+        {
+            var message = BuildMessage(destinationIdentity);
+            message.Append(data);
+
+            SendMessage(message);
+        }
+
+        public void SendMessage(string destinationIdentity, byte[] data)
+        {
+            var message = BuildMessage(destinationIdentity);
+            message.Append(data);
+
+            SendMessage(message);
+        }
+
+        public void SendMessage(string destinationIdentity, int data)
+        {
+            var message = BuildMessage(destinationIdentity);
+            message.Append(data);
+
+            SendMessage(message);
+        }
+
+        public void SendMessage(string destinationIdentity, long data)
+        {
+            var message = BuildMessage(destinationIdentity);
+            message.Append(data);
+
+            SendMessage(message);
+        }
+
         public void SendMessage(NetMQMessage message)
         {
             if (!IsConnected)
@@ -105,6 +137,14 @@ namespace NetMQ.Services
             task.Start(_poller);
             //wait for the msg to be sent before moving on
             task.Wait();
+        }
+
+        private static NetMQMessage BuildMessage(string destinationIdentity)
+        {
+            var message = new NetMQMessage();
+            message.AppendEmptyFrame();
+            message.Append(Encoding.Unicode.GetBytes(destinationIdentity));
+            return message;
         }
 
         private static NetMQMessage BuildMessage(byte[] destinationIdentity)

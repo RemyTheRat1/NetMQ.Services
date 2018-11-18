@@ -11,7 +11,7 @@ namespace NetMQ.Services.UnitTests
         public void ConnectAndCloseTest()
         {
             string ipAddress = "127.0.0.1";
-            int port = 14600;            
+            int port = 14600;
 
             var sut = new NetMQDealerSocket();
             Assert.False(sut.IsConnected);
@@ -27,7 +27,6 @@ namespace NetMQ.Services.UnitTests
 
             router.Stop();
         }
-
 
         [Fact]
         public void SendMessageTest()
@@ -57,6 +56,32 @@ namespace NetMQ.Services.UnitTests
             router.Stop();
         }
 
+        [Fact]
+        public void SendMessageWithStringIdentityTest()
+        {
+            int port = 14602;
+            string message = "test message";
+            string identity = "dealer";
 
+            var router = new NetMQRouter();
+            router.Start(port);
+
+            var dealerSocket = new DealerSocket();
+            dealerSocket.Options.Identity = Encoding.Unicode.GetBytes(identity); ;
+            dealerSocket.Connect($"tcp://127.0.0.1:{port}");
+
+            var sut = new NetMQDealerSocket();
+            sut.Connect("127.0.0.1", port);
+            sut.SendMessage(identity, message);
+
+            NetMQMessage receivedMessage = null;
+            dealerSocket.TryReceiveMultipartMessage(TimeSpan.FromSeconds(1), ref receivedMessage);
+            Assert.NotNull(receivedMessage);
+            Assert.Equal(message, receivedMessage[1].ConvertToString());
+
+            dealerSocket.Close();
+            sut.Close();
+            router.Stop();
+        }
     }
 }
